@@ -7,7 +7,11 @@ programa
 	inclua biblioteca Mouse --> m
 
 
-
+	funcao limpeTela(inteiro cor){
+		g.definir_cor(cor)
+		g.limpar()
+		g.renderizar()
+	}
 	
 	funcao cadeia sanatize(cadeia User){
 		
@@ -82,26 +86,87 @@ programa
 	inteiro continue = 1
 	cadeia lixo = ""
 
+	inteiro index = 0
+	inteiro fundo = g.criar_cor(30, 30, 30)
+
 	inteiro telax = 600
 	inteiro telay = 400
 	g.iniciar_modo_grafico(falso)
 	g.definir_dimensoes_janela(telax, telay)
 	g.definir_titulo_janela("JapaBank")
 
-	g.definir_cor(g.COR_BRANCO)
-	g.desenhar_retangulo(100, 300, 150, 60, verdadeiro, verdadeiro)
-	g.desenhar_retangulo(350, 300, 150, 60, verdadeiro, verdadeiro)
-	g.desenhar_texto(175, 200, "Qual tipo de operação voce deseja executar?")
-	
-	g.definir_cor(g.COR_PRETO)
-	g.desenhar_texto(150, 325, "Registrar")
-	g.desenhar_texto(415, 325, "Login")
-	g.renderizar()
 
+	enquanto(verdadeiro){
 	
-//enquanto(verdadeiro){
-//	se(m.posicao_x() > telax-150 e m.posicao_x() < telax-400){escreva("AAAAAA")}
-//}
+		escolha (index){
+			caso 0: 
+			//desenha gui			
+				g.definir_cor(fundo)	
+				g.desenhar_retangulo(0, 0, 600, 400, falso, verdadeiro)
+				
+				g.definir_cor(g.COR_BRANCO)				
+				g.desenhar_retangulo(210, 101, 180, 60, verdadeiro, verdadeiro)
+				g.desenhar_retangulo(210, 237, 180, 60, verdadeiro, verdadeiro)
+				g.desenhar_texto(290, 192, "OU")
+					
+				g.definir_cor(g.COR_PRETO)
+				g.desenhar_texto(274, 260, "Registrar")
+				g.desenhar_texto(284, 123, "Login")
+				g.renderizar()
+
+			//funcionamento botoes
+				se(m.posicao_x() > 210 e m.posicao_x() < 390 e m.posicao_y() > 101 e m.posicao_y() < 161 e m.botao_pressionado(m.BOTAO_ESQUERDO)){
+					
+					index = 1
+					limpeTela(fundo)
+					//g.desenhar_retangulo(0, 0, 600, 400, falso, verdadeiro
+				}
+				se(m.posicao_x() > 210 e m.posicao_x() < 390 e m.posicao_y() > 237 e m.posicao_y() < 297 e m.botao_pressionado(m.BOTAO_ESQUERDO)){
+					
+					index = 2
+					limpeTela(fundo)
+					//g.desenhar_retangulo(0, 0, 600, 400, falso, verdadeiro
+				}
+		pare
+			caso 1:
+
+				g.definir_cor(fundo)	
+				g.desenhar_retangulo(0, 0, 600, 400, falso, verdadeiro)
+				g.definir_cor(g.COR_BRANCO)				
+				g.desenhar_retangulo(40, 30, 100, 30, verdadeiro, verdadeiro)
+				g.definir_cor(g.COR_PRETO)
+				g.desenhar_texto(73, 37, "Voltar")
+				g.renderizar()
+
+			se(m.posicao_x() > 40 e m.posicao_x() < 140 e m.posicao_y() > 30 e m.posicao_y() < 60 e m.botao_pressionado(m.BOTAO_ESQUERDO)){
+					
+					index = 0
+					limpeTela(fundo)
+					//g.desenhar_retangulo(0, 0, 600, 400, falso, verdadeiro
+				}
+		pare
+		caso 2:
+
+				g.definir_cor(fundo)	
+				g.desenhar_retangulo(0, 0, 600, 400, falso, verdadeiro)
+				g.definir_cor(g.COR_BRANCO)				
+				g.desenhar_retangulo(40, 30, 100, 30, verdadeiro, verdadeiro)
+				g.definir_cor(g.COR_PRETO)
+				g.desenhar_texto(73, 37, "Voltar")
+				g.renderizar()
+
+			se(m.posicao_x() > 40 e m.posicao_x() < 140 e m.posicao_y() > 30 e m.posicao_y() < 60 e m.botao_pressionado(m.BOTAO_ESQUERDO)){
+					
+					index = 0
+					limpeTela(fundo)
+					//g.desenhar_retangulo(0, 0, 600, 400, falso, verdadeiro
+				}
+		pare
+
+		
+	}
+	//escreva(m.posicao_x()+"\n")
+}
 	enquanto(continue == 1){
 	escreva("Qual tipo de operação voce deseja executar? \n")
 	escreva("1 - Registrar \n")
@@ -305,8 +370,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2137; 
- * @DOBRAMENTO-CODIGO = [11, 18, 32, 44, 60];
+ * @POSICAO-CURSOR = 3963; 
+ * @DOBRAMENTO-CODIGO = [15, 22, 36, 48, 64];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
